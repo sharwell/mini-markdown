@@ -1,9 +1,10 @@
 package org.antlr.md;
 
+import java.util.Arrays;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.atn.PredictionMode;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,14 +16,14 @@ public class MDTests {
 	}
 
 	public void check(String input, String expected) {
-		ParseTree t = getParseTree(input);
+		ParserRuleContext t = getParseTree(input);
 		assertEquals(expected, asString(t));
 	}
 
-	public String asString(ParseTree t) {
-		MarkdownParser parser = new MarkdownParser(null);
-		return t.toStringTree(parser);
+	public String asString(ParserRuleContext t) {
+		return t.toStringTree(Arrays.asList(MarkdownParser.ruleNames));
 	}
+
 	public ParserRuleContext getParseTree(String input) {
 		ANTLRInputStream chars = new ANTLRInputStream(input);
 		CharsAsTokens charTokens = new CharsAsTokens(chars, MarkdownParser.tokenNames);
