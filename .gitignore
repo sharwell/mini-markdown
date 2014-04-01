@@ -1,4 +1,6 @@
+# Build output
 *.class
+/target/
 
 # Package Files #
 *.jar
