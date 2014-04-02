@@ -1,0 +1,1 @@
+(file \n (elem (list (listElem * (ws  ) (paraContent (text o n e) \n)) (listElem * (ws  ) (paraContent (text t w o))) (nl \n) (nl \n))) <EOF>)
