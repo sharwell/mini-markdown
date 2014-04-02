@@ -8,7 +8,6 @@ import java.util.Arrays;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.atn.PredictionMode;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -80,6 +79,7 @@ public class MDTests {
 		CommonTokenStream tokens = new CommonTokenStream(charTokens);
 		MarkdownParser parser = new MarkdownParser(tokens);
 		ParserRuleContext t = parser.file();
+		assertEquals(0, parser.getNumberOfSyntaxErrors());
 //		t.inspect(Arrays.asList(MarkdownParser.ruleNames));
 		return t;
 	}
